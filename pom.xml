@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.eliasogueira.simulacao.restriction</groupId>
-    <artifactId>restriction-credito</artifactId>
+    <groupId>com.eliasogueira.credit</groupId>
+    <artifactId>credit-restriction</artifactId>
     <version>1.1-SNAPSHOT</version>
 
     <properties>
