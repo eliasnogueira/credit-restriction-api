@@ -45,16 +45,16 @@ public class LoadDatabase {
     private HashMap<String, String> dataToInsert() {
         HashMap<String, String> data = new HashMap<>();
 
-        data.put("97093236014", Type.BLOQUEIO_JURICIAL.value());
-        data.put("60094146012", Type.CARTAO_CREDITO.value());
-        data.put("84809766080", Type.BANCARIA.value());
-        data.put("62648716050", Type.SPC.value());
-        data.put("26276298085", Type.SPC.value());
-        data.put("01317496094", Type.CARTAO_CREDITO.value());
-        data.put("55856777050", Type.BANCARIA.value());
-        data.put("19626829001", Type.BLOQUEIO_JURICIAL.value());
-        data.put("24094592008", Type.BANCARIA.value());
-        data.put("58063164083", Type.BANCARIA.value());
+        data.put("97093236014", Type.JUDICIAL_ISSUE.value());
+        data.put("60094146012", Type.CREDIT_CARD.value());
+        data.put("84809766080", Type.BANKING.value());
+        data.put("62648716050", Type.CREDIT_SCORE.value());
+        data.put("26276298085", Type.CREDIT_SCORE.value());
+        data.put("01317496094", Type.CREDIT_CARD.value());
+        data.put("55856777050", Type.BANKING.value());
+        data.put("19626829001", Type.JUDICIAL_ISSUE.value());
+        data.put("24094592008", Type.BANKING.value());
+        data.put("58063164083", Type.BANKING.value());
 
         return data;
     }

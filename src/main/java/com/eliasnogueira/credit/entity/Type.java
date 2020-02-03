@@ -26,10 +26,10 @@ package com.eliasnogueira.credit.entity;
 
 public enum Type {
 
-    BLOQUEIO_JURICIAL("Bloqueio Judicial"),
-    CARTAO_CREDITO("Cartão de Crédito"),
-    SPC("SPC"),
-    BANCARIA("Bancária");
+    JUDICIAL_ISSUE("Judicial Issue"),
+    CREDIT_CARD("Credit Card"),
+    CREDIT_SCORE("Credit Score"),
+    BANKING("Banking");
 
     private String value;
 

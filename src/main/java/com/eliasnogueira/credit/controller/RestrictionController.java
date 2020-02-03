@@ -44,6 +44,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RestrictionController {
 
     private final RestrictionService restrictionService;
+    private static final String CPF_HAS_RESTRICTIONS = "CPF {0} has a restriction";
 
     public RestrictionController(RestrictionService restrictionService) {
         this.restrictionService = restrictionService;
@@ -60,7 +61,7 @@ public class RestrictionController {
 
         if (restrictionOptional.isPresent()) {
             throw new com.eliasnogueira.credit.exception.v1.RestrictionException(
-                MessageFormat.format("O CPF {0} possui restrição", cpf));
+                MessageFormat.format(CPF_HAS_RESTRICTIONS, cpf));
         }
 
         return ResponseEntity.noContent().build();
@@ -77,7 +78,7 @@ public class RestrictionController {
 
         if (restrictionOptional.isPresent()) {
             throw new RestrictionException(
-                MessageFormat.format("O CPF {0} possui restrição", cpf),
+                MessageFormat.format(CPF_HAS_RESTRICTIONS, cpf),
                 restrictionOptional.get().getType());
         }
 

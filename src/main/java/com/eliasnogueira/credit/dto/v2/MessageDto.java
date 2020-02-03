@@ -40,5 +40,5 @@ public class MessageDto {
     private String returnMessage;
 
     @ApiModelProperty(position = 1, required = true, example = "Judicial")
-    private String rename;
+    private String detail;
 }
