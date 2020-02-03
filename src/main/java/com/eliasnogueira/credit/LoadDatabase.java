@@ -37,9 +37,8 @@ public class LoadDatabase {
 
     @Bean
     CommandLineRunner initDatabase(RestrictionRepository restrictionRepository) {
-        return args -> {
-            dataToInsert().forEach((cpf, restriction) -> restrictionRepository.save(new Restriction(cpf, restriction)));
-        };
+        return args -> dataToInsert()
+            .forEach((cpf, restriction) -> restrictionRepository.save(new Restriction(cpf, restriction)));
     }
 
     private HashMap<String, String> dataToInsert() {
