@@ -43,7 +43,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).
-            tags(new Tag("Restriction", "Query for a credit restriction")).
+            tags(new Tag("Restrictions", "Query for a credit restriction")).
             genericModelSubstitutes(ListenableFuture.class).
             useDefaultResponseMessages(false).
             apiInfo(apiInfo()).
