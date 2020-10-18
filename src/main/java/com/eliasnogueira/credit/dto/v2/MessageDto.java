@@ -26,13 +26,7 @@ package com.eliasnogueira.credit.dto.v2;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @ApiModel(value = "Message v2")
 public class MessageDto {
 
@@ -41,4 +35,9 @@ public class MessageDto {
 
     @ApiModelProperty(position = 1, required = true, example = "Judicial")
     private String detail;
+
+    public MessageDto(String returnMessage, String detail) {
+        this.returnMessage = returnMessage;
+        this.detail = detail;
+    }
 }

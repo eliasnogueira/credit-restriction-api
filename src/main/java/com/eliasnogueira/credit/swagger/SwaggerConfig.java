@@ -43,7 +43,7 @@ public class SwaggerConfig {
     @Bean
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2).
-            tags(new Tag("Restrictions", "Query for a credit restriction")).
+            tags(new Tag("Restrictions", "Restrictions API")).
             genericModelSubstitutes(ListenableFuture.class).
             useDefaultResponseMessages(false).
             apiInfo(apiInfo()).
@@ -55,8 +55,8 @@ public class SwaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().
-            title("Query for a credit restriction").
-            description("Find if a CPF has a restriction").
+            title("Restrictions API").
+            description("Query for a credit restriction").
             build();
     }
 }

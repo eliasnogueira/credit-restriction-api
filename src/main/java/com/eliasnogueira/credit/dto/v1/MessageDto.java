@@ -26,16 +26,20 @@ package com.eliasnogueira.credit.dto.v1;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
-@AllArgsConstructor
 @ApiModel(value = "Message v1")
 public class MessageDto {
 
     @ApiModelProperty(required = true, example = "CPF 999999999 has a restriction")
-    private String message;
+    private final String message;
+
+    public MessageDto(String message) {
+        this.message = message;
+    }
+
+    public String getMessage() {
+        return message;
+    }
 
     @Override
     public String toString() {

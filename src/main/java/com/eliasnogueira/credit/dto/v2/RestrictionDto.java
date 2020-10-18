@@ -26,9 +26,7 @@ package com.eliasnogueira.credit.dto.v2;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
-import lombok.Data;
 
-@Data
 @ApiModel(value = "Restriction v2")
 public class RestrictionDto {
 

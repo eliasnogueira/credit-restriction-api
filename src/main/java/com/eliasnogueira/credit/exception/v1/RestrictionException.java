@@ -24,14 +24,19 @@
 
 package com.eliasnogueira.credit.exception.v1;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
 
-@Data
-@AllArgsConstructor
 public class RestrictionException extends RuntimeException {
 
     private final String message;
+
+    public RestrictionException(String message) {
+        this.message = message;
+    }
+
+    @Override
+    public String getMessage() {
+        return message;
+    }
 
     @Override
     public String toString() {
