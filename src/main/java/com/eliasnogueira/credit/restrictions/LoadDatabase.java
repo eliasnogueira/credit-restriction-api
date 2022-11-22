@@ -22,41 +22,40 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.swagger;
+package com.eliasnogueira.credit.restrictions;
 
+import com.eliasnogueira.credit.restrictions.entity.Restriction;
+import com.eliasnogueira.credit.restrictions.entity.Type;
+import com.eliasnogueira.credit.restrictions.repository.RestrictionRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.concurrent.ListenableFuture;
-import springfox.documentation.builders.ApiInfoBuilder;
-import springfox.documentation.builders.PathSelectors;
-import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Tag;
-import springfox.documentation.spi.DocumentationType;
-import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.util.HashMap;
 
 @Configuration
-@EnableSwagger2
-public class SwaggerConfig {
+public class LoadDatabase {
 
     @Bean
-    public Docket api() {
-        return new Docket(DocumentationType.SWAGGER_2).
-            tags(new Tag("Restrictions", "Restrictions API")).
-            genericModelSubstitutes(ListenableFuture.class).
-            useDefaultResponseMessages(false).
-            apiInfo(apiInfo()).
-            select().
-            apis(RequestHandlerSelectors.basePackage("com.eliasnogueira.credit.controller")).
-            paths(PathSelectors.any()).
-            build();
+    CommandLineRunner initDatabase(RestrictionRepository restrictionRepository) {
+        return args -> dataToInsert()
+                .forEach((cpf, restriction) -> restrictionRepository.save(new Restriction(cpf, restriction)));
     }
 
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder().
-            title("Restrictions API").
-            description("Query for a credit restriction").
-            build();
+    private HashMap<String, String> dataToInsert() {
+        HashMap<String, String> data = new HashMap<>();
+
+        data.put("97093236014", Type.JUDICIAL_ISSUE.get());
+        data.put("60094146012", Type.CREDIT_CARD.get());
+        data.put("84809766080", Type.BANKING.get());
+        data.put("62648716050", Type.CREDIT_SCORE.get());
+        data.put("26276298085", Type.CREDIT_SCORE.get());
+        data.put("01317496094", Type.CREDIT_CARD.get());
+        data.put("55856777050", Type.BANKING.get());
+        data.put("19626829001", Type.JUDICIAL_ISSUE.get());
+        data.put("24094592008", Type.BANKING.get());
+        data.put("58063164083", Type.BANKING.get());
+
+        return data;
     }
 }

@@ -22,29 +22,30 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.service.impl;
+package com.eliasnogueira.credit.restrictions.entity;
 
-import com.eliasnogueira.credit.entity.Restriction;
-import com.eliasnogueira.credit.repository.RestrictionRepository;
-import com.eliasnogueira.credit.service.RestrictionService;
-import java.util.Optional;
-import org.springframework.stereotype.Service;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Service("restrictionService")
-public class RestrictionServiceImpl implements RestrictionService {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-    private final RestrictionRepository repository;
+@Data
+@NoArgsConstructor
+@Entity
+public class Restriction {
 
-    public RestrictionServiceImpl(RestrictionRepository repository) {
-        this.repository = repository;
-    }
+    @Id
+    @GeneratedValue
+    private Long id;
 
-    @Override
-    public Restriction save(Restriction restriction) {
-        return null;
-    }
+    private String cpf;
 
-    public Optional<Restriction> findByCpf(String cpf) {
-        return repository.findByCpf(cpf);
+    private String type;
+
+    public Restriction(String cpf, String type) {
+        this.cpf = cpf;
+        this.type = type;
     }
 }

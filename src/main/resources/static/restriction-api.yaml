@@ -1,0 +1,80 @@
+openapi: 3.0.0
+info:
+  version: 1.4.0
+  description: Query CPF restrictions
+  title: Credit Restriction API
+tags:
+  - name: Restrictions
+    description: Query restrictions
+paths:
+  "/api/v1/restrictions/{cpf}":
+    get:
+      tags:
+        - Restrictions
+      summary: Query to search for a restricted CPF
+      operationId: oneUsingGET
+      parameters:
+        - name: cpf
+          in: path
+          description: CPF to query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Restriction found
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/MessageV1"
+        "404":
+          description: No restrictions
+
+  "/api/v2/restrictions/{cpf}":
+    get:
+      tags:
+        - Restrictions
+      summary: Query to search for a restricted CPF
+      operationId: oneV2UsingGET
+      parameters:
+        - name: cpf
+          in: path
+          description: CPF to query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Restriction found
+          content:
+            "application/json":
+              schema:
+                $ref: "#/components/schemas/MessageV2"
+        "404":
+          description: No restrictions
+servers:
+  - url: //localhost:8088/
+components:
+  schemas:
+    MessageV1:
+      type: object
+      required:
+        - message
+      properties:
+        message:
+          type: string
+          example: CPF 999999999 has a restriction
+      title: Message v1
+    MessageV2:
+      type: object
+      required:
+        - detail
+        - returnMessage
+      properties:
+        detail:
+          type: string
+          example: Judicial
+        returnMessage:
+          type: string
+          example: CPF 999999999 not found
+      title: Message v2

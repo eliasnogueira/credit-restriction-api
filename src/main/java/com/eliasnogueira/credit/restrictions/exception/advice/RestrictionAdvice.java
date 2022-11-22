@@ -22,10 +22,10 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.exception.advice;
+package com.eliasnogueira.credit.restrictions.exception.advice;
 
-import com.eliasnogueira.credit.dto.v1.MessageDto;
-import com.eliasnogueira.credit.exception.v2.RestrictionException;
+import com.eliasnogueira.credit.restrictions.dto.v1.MessageDto;
+import com.eliasnogueira.credit.restrictions.exception.v2.RestrictionException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -36,17 +36,17 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class RestrictionAdvice {
 
     @ResponseBody
-    @ExceptionHandler(com.eliasnogueira.credit.exception.v1.RestrictionException.class)
+    @ExceptionHandler(com.eliasnogueira.credit.restrictions.exception.v1.RestrictionException.class)
     @ResponseStatus(HttpStatus.OK)
-    MessageDto restrictionHandlerV1(com.eliasnogueira.credit.exception.v1.RestrictionException e) {
+    MessageDto restrictionHandlerV1(com.eliasnogueira.credit.restrictions.exception.v1.RestrictionException e) {
         return new MessageDto(e.getMessage());
     }
 
     @ResponseBody
     @ExceptionHandler(RestrictionException.class)
     @ResponseStatus(HttpStatus.OK)
-    com.eliasnogueira.credit.dto.v2.MessageDto restrictionHandlerV2(
+    com.eliasnogueira.credit.restrictions.dto.v2.MessageDto restrictionHandlerV2(
         RestrictionException e) {
-        return new com.eliasnogueira.credit.dto.v2.MessageDto(e.getMessage(), e.getDetail());
+        return new com.eliasnogueira.credit.restrictions.dto.v2.MessageDto(e.getMessage(), e.getDetail());
     }
 }

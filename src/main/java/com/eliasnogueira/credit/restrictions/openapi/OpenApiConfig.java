@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 Elias Nogueira
+ * Copyright (c) 2022 Elias Nogueira
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,21 +22,29 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.dto.v1;
+package com.eliasnogueira.credit.restrictions.openapi;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-@ApiModel(value = "Restriction v1")
-public class RestrictionDto {
+import org.springdoc.core.SpringDocConfigProperties;
+import org.springdoc.core.SpringDocConfiguration;
+import org.springdoc.core.providers.ObjectMapperProvider;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-    @ApiModelProperty(required = true, example = "99999999999")
-    private String cpf;
+@Configuration
+public class OpenApiConfig {
 
-    public String getCpf() {
-        return cpf;
+    @Bean
+    SpringDocConfiguration springDocConfiguration() {
+        return new SpringDocConfiguration();
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    @Bean
+    SpringDocConfigProperties springDocConfigProperties() {
+        return new SpringDocConfigProperties();
+    }
+
+    @Bean
+    ObjectMapperProvider objectMapperProvider(SpringDocConfigProperties springDocConfigProperties) {
+        return new ObjectMapperProvider(springDocConfigProperties);
     }
 }

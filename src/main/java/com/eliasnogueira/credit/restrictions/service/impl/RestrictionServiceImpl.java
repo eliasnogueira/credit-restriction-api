@@ -22,22 +22,24 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit;
+package com.eliasnogueira.credit.restrictions.service.impl;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import com.eliasnogueira.credit.restrictions.entity.Restriction;
+import com.eliasnogueira.credit.restrictions.repository.RestrictionRepository;
+import com.eliasnogueira.credit.restrictions.service.RestrictionService;
+import java.util.Optional;
+import org.springframework.stereotype.Service;
 
-@SpringBootApplication
-@EnableJpaRepositories
-public class Run {
+@Service("restrictionService")
+public class RestrictionServiceImpl implements RestrictionService {
 
-    private static final Logger log = LogManager.getLogger(Run.class);
+    private final RestrictionRepository repository;
 
-    public static void main(String[] args) {
-        SpringApplication.run(Run.class, args);
-        log.info("Application has started! Happy tests!");
+    public RestrictionServiceImpl(RestrictionRepository repository) {
+        this.repository = repository;
+    }
+
+    public Optional<Restriction> findByCpf(String cpf) {
+        return repository.findByCpf(cpf);
     }
 }

@@ -22,17 +22,18 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.dto.v2;
+package com.eliasnogueira.credit.restrictions.repository;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "Restriction v2")
-public class RestrictionDto {
+import com.eliasnogueira.credit.restrictions.entity.Restriction;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-    @ApiModelProperty(required = true, example = "99999999999")
-    private String cpf;
+@Repository
+public interface RestrictionRepository extends JpaRepository<Restriction, Long> {
 
-    @ApiModelProperty(position = 1, required = true, example = "Judicial")
-    private String type;
+    Optional<Restriction> findByCpf(@Param("cpf") String cpf);
+
 }

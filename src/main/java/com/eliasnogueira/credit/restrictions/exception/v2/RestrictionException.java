@@ -22,21 +22,22 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.dto.v1;
+package com.eliasnogueira.credit.restrictions.exception.v2;
 
-import io.swagger.annotations.ApiModel;
-import java.util.Map;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@ApiModel(value = "Validation")
-public class ValidationDto {
+@Data
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class RestrictionException extends RuntimeException {
 
-    private Map<String, String> errors;
+    private final String message;
+    private final String detail;
 
-    public ValidationDto(Map<String, String> errors) {
-        this.errors = errors;
-    }
-
-    public Map<String, String> getErrors() {
-        return errors;
+    @Override
+    public String toString() {
+        return message + " " + detail;
     }
 }
