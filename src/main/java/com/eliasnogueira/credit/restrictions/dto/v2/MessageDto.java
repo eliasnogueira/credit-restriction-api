@@ -22,18 +22,7 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.repository;
+package com.eliasnogueira.credit.restrictions.dto.v2;
 
-
-import com.eliasnogueira.credit.entity.Restriction;
-import java.util.Optional;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.query.Param;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface RestrictionRepository extends JpaRepository<Restriction, Long> {
-
-    Optional<Restriction> findByCpf(@Param("cpf") String cpf);
-
+public record MessageDto(String returnMessage, String detail) {
 }

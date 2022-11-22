@@ -22,22 +22,21 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.dto.v2;
+package com.eliasnogueira.credit.restrictions.exception.v1;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-@ApiModel(value = "Message v2")
-public class MessageDto {
+@Data
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class RestrictionException extends RuntimeException {
 
-    @ApiModelProperty(position = 0, required = true, example = "CPF 999999999 not found")
-    private String returnMessage;
+    private final String message;
 
-    @ApiModelProperty(position = 1, required = true, example = "Judicial")
-    private String detail;
-
-    public MessageDto(String returnMessage, String detail) {
-        this.returnMessage = returnMessage;
-        this.detail = detail;
+    @Override
+    public String toString() {
+        return message;
     }
 }

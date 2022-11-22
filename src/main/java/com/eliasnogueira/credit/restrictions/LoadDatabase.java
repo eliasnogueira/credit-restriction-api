@@ -22,15 +22,16 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit;
+package com.eliasnogueira.credit.restrictions;
 
-import com.eliasnogueira.credit.entity.Restriction;
-import com.eliasnogueira.credit.entity.Type;
-import com.eliasnogueira.credit.repository.RestrictionRepository;
-import java.util.HashMap;
+import com.eliasnogueira.credit.restrictions.entity.Restriction;
+import com.eliasnogueira.credit.restrictions.entity.Type;
+import com.eliasnogueira.credit.restrictions.repository.RestrictionRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.HashMap;
 
 @Configuration
 public class LoadDatabase {
@@ -38,24 +39,23 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(RestrictionRepository restrictionRepository) {
         return args -> dataToInsert()
-            .forEach((cpf, restriction) -> restrictionRepository.save(new Restriction(cpf, restriction)));
+                .forEach((cpf, restriction) -> restrictionRepository.save(new Restriction(cpf, restriction)));
     }
 
     private HashMap<String, String> dataToInsert() {
         HashMap<String, String> data = new HashMap<>();
 
-        data.put("97093236014", Type.JUDICIAL_ISSUE.value());
-        data.put("60094146012", Type.CREDIT_CARD.value());
-        data.put("84809766080", Type.BANKING.value());
-        data.put("62648716050", Type.CREDIT_SCORE.value());
-        data.put("26276298085", Type.CREDIT_SCORE.value());
-        data.put("01317496094", Type.CREDIT_CARD.value());
-        data.put("55856777050", Type.BANKING.value());
-        data.put("19626829001", Type.JUDICIAL_ISSUE.value());
-        data.put("24094592008", Type.BANKING.value());
-        data.put("58063164083", Type.BANKING.value());
+        data.put("97093236014", Type.JUDICIAL_ISSUE.get());
+        data.put("60094146012", Type.CREDIT_CARD.get());
+        data.put("84809766080", Type.BANKING.get());
+        data.put("62648716050", Type.CREDIT_SCORE.get());
+        data.put("26276298085", Type.CREDIT_SCORE.get());
+        data.put("01317496094", Type.CREDIT_CARD.get());
+        data.put("55856777050", Type.BANKING.get());
+        data.put("19626829001", Type.JUDICIAL_ISSUE.get());
+        data.put("24094592008", Type.BANKING.get());
+        data.put("58063164083", Type.BANKING.get());
 
         return data;
     }
-
 }

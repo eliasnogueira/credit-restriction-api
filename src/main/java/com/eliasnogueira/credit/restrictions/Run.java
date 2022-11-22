@@ -22,51 +22,22 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.entity;
+package com.eliasnogueira.credit.restrictions;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@Entity
-public class Restriction {
+@SpringBootApplication
+@EnableJpaRepositories
+public class Run {
 
-    @Id
-    @GeneratedValue
-    private Long id;
+    private static final Logger log = LogManager.getLogger(Run.class);
 
-    private String cpf;
-
-    private String type;
-
-    public Restriction() {}
-
-    public Restriction(String cpf, String type) {
-        this.cpf = cpf;
-        this.type = type;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getCpf() {
-        return cpf;
-    }
-
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
+    public static void main(String[] args) {
+        SpringApplication.run(Run.class, args);
+        log.info("Application has started! Happy tests!");
     }
 }

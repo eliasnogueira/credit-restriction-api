@@ -22,27 +22,18 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.dto.v1;
+package com.eliasnogueira.credit.restrictions.repository;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value = "Message v1")
-public class MessageDto {
+import com.eliasnogueira.credit.restrictions.entity.Restriction;
+import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-    @ApiModelProperty(required = true, example = "CPF 999999999 has a restriction")
-    private final String message;
+@Repository
+public interface RestrictionRepository extends JpaRepository<Restriction, Long> {
 
-    public MessageDto(String message) {
-        this.message = message;
-    }
+    Optional<Restriction> findByCpf(@Param("cpf") String cpf);
 
-    public String getMessage() {
-        return message;
-    }
-
-    @Override
-    public String toString() {
-        return message;
-    }
 }

@@ -22,29 +22,13 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.exception.v2;
+package com.eliasnogueira.credit.restrictions.service;
 
-public class RestrictionException extends RuntimeException {
+import com.eliasnogueira.credit.restrictions.entity.Restriction;
+import java.util.Optional;
 
-    private final String message;
-    private final String detail;
+public interface RestrictionService {
 
-    public RestrictionException(String message, String detail) {
-        this.message = message;
-        this.detail = detail;
-    }
+    Optional<Restriction> findByCpf(String cpf);
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
-
-    public String getDetail() {
-        return detail;
-    }
-
-    @Override
-    public String toString() {
-        return message + " " + detail;
-    }
 }

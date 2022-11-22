@@ -22,24 +22,7 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.exception.v1;
+package com.eliasnogueira.credit.restrictions.dto.v1;
 
-
-public class RestrictionException extends RuntimeException {
-
-    private final String message;
-
-    public RestrictionException(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
-
-    @Override
-    public String toString() {
-        return message;
-    }
+public record MessageDto(String message) {
 }

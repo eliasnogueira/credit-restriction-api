@@ -22,22 +22,25 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.entity;
+package com.eliasnogueira.credit.restrictions.entity;
 
-public enum Type {
+import java.util.function.Supplier;
+
+public enum Type implements Supplier<String> {
 
     JUDICIAL_ISSUE("Judicial Issue"),
     CREDIT_CARD("Credit Card"),
     CREDIT_SCORE("Credit Score"),
     BANKING("Banking");
 
-    private String value;
+    private final String value;
 
     Type(String value) {
         this.value = value;
     }
 
-    public String value() {
-        return value;
+    @Override
+    public String get() {
+        return this.value;
     }
 }

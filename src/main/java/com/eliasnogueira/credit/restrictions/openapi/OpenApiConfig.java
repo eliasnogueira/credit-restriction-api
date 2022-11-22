@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2020 Elias Nogueira
+ * Copyright (c) 2022 Elias Nogueira
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,22 +22,29 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit;
+package com.eliasnogueira.credit.restrictions.openapi;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springdoc.core.SpringDocConfigProperties;
+import org.springdoc.core.SpringDocConfiguration;
+import org.springdoc.core.providers.ObjectMapperProvider;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-@EnableJpaRepositories
-public class Run {
+@Configuration
+public class OpenApiConfig {
 
-    private static final Logger log = LogManager.getLogger(Run.class);
+    @Bean
+    SpringDocConfiguration springDocConfiguration() {
+        return new SpringDocConfiguration();
+    }
 
-    public static void main(String[] args) {
-        SpringApplication.run(Run.class, args);
-        log.info("Application has started! Happy tests!");
+    @Bean
+    SpringDocConfigProperties springDocConfigProperties() {
+        return new SpringDocConfigProperties();
+    }
+
+    @Bean
+    ObjectMapperProvider objectMapperProvider(SpringDocConfigProperties springDocConfigProperties) {
+        return new ObjectMapperProvider(springDocConfigProperties);
     }
 }

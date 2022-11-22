@@ -22,15 +22,24 @@
  * SOFTWARE.
  */
 
-package com.eliasnogueira.credit.service;
+package com.eliasnogueira.credit.restrictions.service.impl;
 
-import com.eliasnogueira.credit.entity.Restriction;
+import com.eliasnogueira.credit.restrictions.entity.Restriction;
+import com.eliasnogueira.credit.restrictions.repository.RestrictionRepository;
+import com.eliasnogueira.credit.restrictions.service.RestrictionService;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
-public interface RestrictionService {
+@Service("restrictionService")
+public class RestrictionServiceImpl implements RestrictionService {
 
-    Restriction save(Restriction restriction);
+    private final RestrictionRepository repository;
 
-    Optional<Restriction> findByCpf(String cpf);
+    public RestrictionServiceImpl(RestrictionRepository repository) {
+        this.repository = repository;
+    }
 
+    public Optional<Restriction> findByCpf(String cpf) {
+        return repository.findByCpf(cpf);
+    }
 }
